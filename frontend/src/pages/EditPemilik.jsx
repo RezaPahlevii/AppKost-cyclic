@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
-import Userlist from '../components/Userlist';
-import Layout from './Layout';
+import Layout from './Layout'
+import FormEditPemilik from '../components/FormEditPemilik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getMe } from '../features/authSlice';
 
-const Users = () => {
+const EditPemilik = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {isError, user} = useSelector((state => state.auth));
+  const {isError, pemilik} = useSelector((state => state.auth));
 
   useEffect(()=>{
     dispatch(getMe());
@@ -18,16 +18,15 @@ const Users = () => {
     if(isError){
       navigate("/");
     }
-    if(user && user.role !== "admin"){
+    if(pemilik && pemilik.role !== "admin"){
       navigate("/dashboard");
     }
   }, [isError, navigate]);
-
   return (
     <Layout>
-        <Userlist/>
+        <FormEditPemilik/>
     </Layout>
   )
 }
 
-export default Users
+export default EditPemilik

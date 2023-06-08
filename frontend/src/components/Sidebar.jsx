@@ -7,7 +7,7 @@ import { LogOut, reset } from "../features/authSlice";
 function Sidebar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user} = useSelector((state) => state.auth)
+  const {pemilik} = useSelector((state) => state.auth)
 
   const logout = () =>{
     dispatch(LogOut());
@@ -33,7 +33,7 @@ function Sidebar() {
             </NavLink>
           </li>
         </ul>
-        {user && user.role === "admin" && (
+        {pemilik && pemilik.role === "admin" && (
           <div>
         <p className="menu-label">Admin</p>
         <ul className="menu-list">

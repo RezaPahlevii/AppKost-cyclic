@@ -40,7 +40,7 @@ const RumahKostlist = () => {
                     <td>{index + 1}</td>
                     <td>{kost.name}</td>
                     <td>{kost.price}</td>
-                    <td>{kost.user.name}</td>
+                    <td>{kost.pemilik.name}</td>
                     <td>
                         <Link to={`/rumah-kost/edit/${kost.uuid}`}className='btn btn-warning' >Edit</Link>
                         <button onClick={()=> deleteKost(kost.uuid)} className='btn btn-danger' >Delete</button>

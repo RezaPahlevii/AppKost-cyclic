@@ -1,5 +1,5 @@
 import Kost from "../models/KostModel.js";
-import Users from "../models/UserModel.js";
+import Pemilik from "../models/PemilikModel.js";
 import { Op } from "sequelize";
 
  export const getKost = async (req, res) =>{
@@ -9,7 +9,7 @@ import { Op } from "sequelize";
             response = await Kost.findAll({
                 attributes:['uuid','name','price'],
                 include:[{
-                    model: Users,
+                    model: Pemilik,
                     attributes:['name','email']
                 }]
             });
@@ -17,10 +17,10 @@ import { Op } from "sequelize";
             response = await Kost.findAll({
                 attributes:['uuid','name','price'],
                 where:{
-                    userId: req.userId
+                    pemilikId: req.pemilikId
                 },
                 include:[{
-                    model: Users,
+                    model: Pemilik,
                     attributes:['name','email']
                 }]
             });
@@ -47,7 +47,7 @@ import { Op } from "sequelize";
                     id: kost.id
                 },
                 include:[{
-                    model: Users,
+                    model: Pemilik,
                     attributes:['name','email']
                 }]
             });
@@ -55,10 +55,10 @@ import { Op } from "sequelize";
             response = await Kost.findOne({
                 attributes:['uuid','name','price'],
                 where:{
-                    [Op.and]:[{id: kost.id}, {userId: req.userId}]
+                    [Op.and]:[{id: kost.id}, {pemilikId: req.pemilikId}]
                 },
                 include:[{
-                    model: Users,
+                    model: Pemilik,
                     attributes:['name','email']
                 }]
             });
@@ -75,7 +75,7 @@ import { Op } from "sequelize";
         await Kost.create({
             name: name,
             price: price,
-            userId: req.userId
+            pemilikId: req.pemilikId
         });
         res.status(201).json({msg: "Berhasil menambahkan kamar kost"});
     } catch (error) {
@@ -99,10 +99,10 @@ import { Op } from "sequelize";
                 }
             });
         }else{
-            if(req.userId !== kost.userId) return res.status(403).json({msg: "Akses terlarang"})
+            if(req.pemilikId !== kost.pemilikId) return res.status(403).json({msg: "Akses terlarang"})
             await Kost.update({name, price},{
                 where:{
-                    [Op.and]:[{id: kost.id}, {userId: req.userId}]
+                    [Op.and]:[{id: kost.id}, {pemilikId: req.pemilikId}]
                 }
             });
         }
@@ -128,10 +128,10 @@ import { Op } from "sequelize";
                 }
             });
         }else{
-            if(req.userId !== kost.userId) return res.status(403).json({msg: "Akses terlarang"})
+            if(req.pemilikId !== kost.pemilikId) return res.status(403).json({msg: "Akses terlarang"})
             await Kost.destroy({
                 where:{
-                    [Op.and]:[{id: kost.id}, {userId: req.userId}]
+                    [Op.and]:[{id: kost.id}, {pemilikId: req.pemilikId}]
                 }
             });
         }

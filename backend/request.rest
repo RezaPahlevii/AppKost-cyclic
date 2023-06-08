@@ -1,4 +1,4 @@
-// Create User (Register)
+// Create user (Register)
 POST http://localhost:5000/users
 Content-Type: application/json
 
@@ -7,7 +7,7 @@ Content-Type: application/json
     "email": "ajo@gmail.com",
     "password": "123",
     "confPassword": "123",
-    "role": "user"
+    "role": "pemilik"
 }
 
 ###

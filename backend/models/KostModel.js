@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Users from "./UserModel.js";
+import Pemilik from "./PemilikModel.js";
 
 const {DataTypes} = Sequelize;
 const Kost = db.define('kost',{
@@ -27,7 +27,7 @@ const Kost = db.define('kost',{
            notEmpty: true,
        }
    },
-   userId:{
+   pemilikId:{
        type: DataTypes.INTEGER,
        allowNull: false,
        validate:{
@@ -39,7 +39,7 @@ const Kost = db.define('kost',{
 freezeTableName: true
 });
 
-Users.hasMany(Kost);
-Kost.belongsTo(Users, {foreignKey: 'userId'});
+Pemilik.hasMany(Kost);
+Kost.belongsTo(Pemilik, {foreignKey: 'pemilikId'});
 
 export default Kost;

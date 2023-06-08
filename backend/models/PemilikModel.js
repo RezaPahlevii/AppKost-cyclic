@@ -3,7 +3,7 @@ import db from "../config/Database.js";
 // import Kost from './KostModel.js'
 
 const {DataTypes} = Sequelize;
-const Users = db.define('users',{
+const Pemilik = db.define('pemilik',{
     uuid:{
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
@@ -47,4 +47,4 @@ const Users = db.define('users',{
 freezeTableName: true
  });
 
- export default Users;
+ export default Pemilik;

@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { LoginUser, reset } from "../features/authSlice";
+import { LoginPemilik, reset } from "../features/authSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { user, isError, isSuccess, isLoading, message } = useSelector(
+    const { pemilik, isError, isSuccess, isLoading, message } = useSelector(
       (state) => state.auth
   );
 
   useEffect(()=>{
-    if(user || isSuccess){
+    if(pemilik || isSuccess){
       navigate("/dashboard");
     }
     dispatch(reset());
-  },[user, isSuccess, dispatch, navigate]);
+  },[pemilik, isSuccess, dispatch, navigate]);
   
 
   const Auth = (e) =>{
     e.preventDefault();
-    dispatch(LoginUser({email, password}));
+    dispatch(LoginPemilik({email, password}));
 
   }
 

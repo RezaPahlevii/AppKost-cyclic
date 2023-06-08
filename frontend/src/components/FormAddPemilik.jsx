@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const FormAddUser = () => {
+const FormAddPemilik = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,7 +11,7 @@ const FormAddUser = () => {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
-  const saveUser = async (e) => {
+  const savePemilik = async (e) => {
     e.preventDefault();
     // if (password !== confpassword) {
     //   setMsg("Password and Confirm Password do not match");
@@ -35,12 +35,12 @@ const FormAddUser = () => {
 
   return (
     <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">Add New User</h2>
+      <h1 className="title">Pemilik Kost</h1>
+      <h2 className="subtitle">Add New Pemilik Kost</h2>
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
-            <form onSubmit={saveUser}>
+            <form onSubmit={savePemilik}>
                 <p className="has-text-centered">{msg}</p>
               <div className="field">
                 <label className="label">Name</label>
@@ -97,14 +97,14 @@ const FormAddUser = () => {
                     <div className="select is-fullwidth">
                       <select value={role} onChange={(e)=> setRole(e.target.value)}>
                         <option value="admin">Admin</option>
-                        <option value="user">user</option>
+                        <option value="pemilik">Pemilik Kost</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div className="field">
                   <div className="control">
-                    <button type="submit" onClick={saveUser} className="button is-success">Save</button>
+                    <button type="submit" onClick={savePemilik} className="button is-success">Save</button>
                   </div>
                 </div>
               
@@ -116,4 +116,4 @@ const FormAddUser = () => {
   );
 };
 
-export default FormAddUser;
+export default FormAddPemilik;

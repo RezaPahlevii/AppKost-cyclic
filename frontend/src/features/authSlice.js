@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
-    user: null,
+    pemilik: null,
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: ""
 }
 
-export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkAPI) => {
+export const LoginPemilik = createAsyncThunk("pemilik/LoginPemilik", async(pemilik, thunkAPI) => {
     try {
         const response = await axios.post('http://localhost:5000/login',{
-            email: user.email,
-            password: user.password
+            email: pemilik.email,
+            password: pemilik.password
         });
         return response.data;
     } catch (error) {
@@ -24,7 +24,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkAPI
     }
 })
 
-export const getMe = createAsyncThunk("user/getMe", async(_, thunkAPI) => {
+export const getMe = createAsyncThunk("pemilik/getMe", async(_, thunkAPI) => {
     try {
         const response = await axios.get('http://localhost:5000/me');
         return response.data;
@@ -36,7 +36,7 @@ export const getMe = createAsyncThunk("user/getMe", async(_, thunkAPI) => {
     }
 });
 
-export const LogOut = createAsyncThunk("user/LogOut", async() => {
+export const LogOut = createAsyncThunk("pemilik/LogOut", async() => {
        await axios.delete('http://localhost:5000/logout');
 });
 
@@ -47,28 +47,28 @@ export const authSlice = createSlice({
         reset: (state) => initialState
     },
     extraReducers:(builder) =>{
-        builder.addCase(LoginUser.pending, (state) =>{
+        builder.addCase(LoginPemilik.pending, (state) =>{
             state.isLoading = true;
         });
-        builder.addCase(LoginUser.fulfilled, (state, action) =>{
+        builder.addCase(LoginPemilik.fulfilled, (state, action) =>{
             state.isLoading = false;
             state.isSuccess = true;
-            state.user = action.payload;
+            state.pemilik = action.payload;
         });
-        builder.addCase(LoginUser.rejected, (state, action)=>{
+        builder.addCase(LoginPemilik.rejected, (state, action)=>{
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
         })
 
-        // Get user login
+        // Get pemilik login
         builder.addCase(getMe.pending, (state) =>{
             state.isLoading = true;
         });
         builder.addCase(getMe.fulfilled, (state, action) =>{
             state.isLoading = false;
             state.isSuccess = true;
-            state.user = action.payload;
+            state.pemilik = action.payload;
         });
         builder.addCase(getMe.rejected, (state, action)=>{
             state.isLoading = false;

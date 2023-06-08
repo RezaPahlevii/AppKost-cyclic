@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
-import Users from './pages/Users';
+import Pemilik from './pages/Pemilik';
 import RumahKost from './pages/RumahKost';
-import AddUser from "./pages/AddUser";
-import EditUser from "./pages/EditUser";
+import AddPemilik from "./pages/AddPemilik";
+import EditPemilik from "./pages/EditPemilik";
 import AddRumahKost from './pages/AddRumahKost';
 import EditRumahKost from './pages/EditRumahKost';
 import HomePage from "./pages/HomePage";
@@ -21,9 +21,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/users" element={<Users/>}/>
-        <Route path="/users/add" element={<AddUser/>}/>
-        <Route path="/users/edit/:id" element={<EditUser/>}/>
+        <Route path="/users" element={<Pemilik/>}/>
+        <Route path="/users/add" element={<AddPemilik/>}/>
+        <Route path="/users/edit/:id" element={<EditPemilik/>}/>
         <Route path="/rumah-kost" element={<RumahKost/>}/>
         <Route path="/rumah-kost/add" element={<AddRumahKost/>}/>
         <Route path="/rumah-kost/edit/:id" element={<EditRumahKost/>}/>

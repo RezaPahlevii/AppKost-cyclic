@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const FormEditUser = () => {
+const FormEditPemilik = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +14,7 @@ const FormEditUser = () => {
 
     // tampilkan data form edit sesuai record database
     useEffect(()=>{
-      const getUserById = async()=>{
+      const getPemilikById = async()=>{
           try {
               const response = await axios.get(`http://localhost:5000/users/${id}`);
               setName(response.data.name);
@@ -26,10 +26,10 @@ const FormEditUser = () => {
                 }
           }
       };
-      getUserById();
+      getPemilikById();
     }, [id]);
   
-    const updateUser = async (e) => {
+    const updatePemilik = async (e) => {
       e.preventDefault();
       try {
         await axios.patch(`http://localhost:5000/users/${id}`, {
@@ -49,12 +49,12 @@ const FormEditUser = () => {
 
   return (
     <div>
-        <h1 className='title'>Users</h1>
-        <h2 className='subtitle'>Update User</h2>
+        <h1 className='title'>Pemilik Kost</h1>
+        <h2 className='subtitle'>Update Pemilik Kost</h2>
         <div className="card is-shadowless">
             <div className="card-content">
                 <div className="content">
-                <form onSubmit={updateUser}>
+                <form onSubmit={updatePemilik}>
                 <p className="has-text-centered">{msg}</p>
               <div className="field">
                 <label className="label">Name</label>
@@ -111,14 +111,14 @@ const FormEditUser = () => {
                     <div className="select is-fullwidth">
                       <select value={role} onChange={(e)=> setRole(e.target.value)}>
                         <option value="admin">Admin</option>
-                        <option value="user">user</option>
+                        <option value="pemilik">Pemilik Kost</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div className="field">
                   <div className="control">
-                    <button type="submit" onClick={updateUser} className="button is-success">Update</button>
+                    <button type="submit" onClick={updatePemilik} className="button is-success">Update</button>
                   </div>
                 </div>
                 </form>
@@ -130,4 +130,4 @@ const FormEditUser = () => {
   )
 }
 
-export default FormEditUser
+export default FormEditPemilik
