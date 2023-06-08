@@ -1,13 +1,19 @@
 import express from "express";
-import { getKost, getKostById, createKost, updateKost, deleteKost } from "../controllers/Kost.js";
-import { verifyUser } from "../middleware/AuthUser.js";
+import {
+    getKost,
+    getKostById,
+    createKost,
+    updateKost,
+    deleteKost
+} from "../controllers/Kost.js";
 
 const router = express.Router();
 
-router.get('/rumah-kost',verifyUser, getKost);
-router.get('/rumah-kost/:id', verifyUser, getKostById);
-router.post('/rumah-kost/',verifyUser, createKost);
-router.patch('/rumah-kost/:id', verifyUser, updateKost);
-router.delete('/rumah-kost/:id', verifyUser, deleteKost);
+router.get('/rumah-kost', getKost);
+router.get('/rumah-kost/:id', getKostById);
+router.post('/rumah-kost', createKost);
+router.patch('/rumah-kost/:id', updateKost);
+router.delete('/rumah-kost/:id', deleteKost);
+
 
 export default router;
