@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import db from "./config/Database.js";
 import PemilikRoute from "./routes/PemilikRoute.js";
 import KostRoute from "./routes/KostRoute.js";
+import AuthRoute from "./routes/AuthRoute.js";
 dotenv.config();
 
 const app = express();
@@ -35,6 +36,7 @@ app.use((err, req, res, next) => {
 
 app.use(PemilikRoute);
 app.use(KostRoute);
+app.use(AuthRoute);
 
 app.listen(process.env.APP_PORT, ()=> {
     console.log('Server berjalan dengan baik bangett...');

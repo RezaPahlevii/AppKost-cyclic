@@ -3,11 +3,11 @@ POST http://localhost:5000/pemilik-kost
 Content-Type: application/json
 
 {
-    "name": "lala",
+    "name": "jojo",
     "email": "lala@gmail.com",
     "password": "123",
     "confPassword": "123",
-    "role": "Pemilik Kost"
+    "role": "Pencari Kost"
 }
 
 ###
@@ -34,3 +34,19 @@ Content-Type: application/json
 ###
 // delete a user
 DELETE  http://localhost:5000/pemilik-kost/0e8c6821-f954-40ce-81e7-b386e413cbd9
+
+###
+// Login Users
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "levi@gmail.com",
+    "password": "123"
+}
+
+###
+GET http://localhost:5000/me
+
+###
+DELETE http://localhost:5000/logout
