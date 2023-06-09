@@ -30,3 +30,7 @@ Content-Type: application/json
     "confPassword": "",
     "role": "user"
 }
+
+###
+// delete a user
+DELETE  http://localhost:5000/pemilik-kost/60a00643-0f26-439e-829d-b5edb69da382

@@ -1,9 +1,9 @@
-import Pemilik from "../models/PemilikModel.js";
+import Pencari from "../models/PencariModel.js";
 import argon2 from "argon2";
 
-export const getPemilik = async(req, res) =>{
+export const getPencari = async(req, res) =>{
     try {
-        const response = await Pemilik.findAll({
+        const response = await Pencari.findAll({
             //menampilkan atribut yang hanya di inginkan
             attributes:['uuid','name','email','role']
         });
@@ -12,9 +12,9 @@ export const getPemilik = async(req, res) =>{
         res.status(500).json({msg: error.message});
     }
 }
-export const getPemilikById = async(req, res) =>{
+export const getPencariById = async(req, res) =>{
     try {
-        const response = await Pemilik.findOne({
+        const response = await Pencari.findOne({
             attributes:['uuid','name','email','role'],
             where: {
                 uuid: req.params.id
@@ -25,13 +25,13 @@ export const getPemilikById = async(req, res) =>{
         res.status(500).json({msg: error.message});
     }
 }
-export const createPemilik = async(req, res) =>{
+export const createPencari = async(req, res) =>{
     const {name, email, password, confPassword, role} = req.body;
     // console.log(req.body)
     if(password !== confPassword) return res.status(400).json({msg: "Password dan confirm pasword tidak cocok"});
     const hashPassword = await argon2.hash(password);
     try {
-        await Pemilik.create({
+        await Pencari.create({
             name: name,
             email: email,
             password: hashPassword,
@@ -40,57 +40,57 @@ export const createPemilik = async(req, res) =>{
         res.status(201).json({msg: "Regiter Berhasil"});
     } catch (error) {
         console.error(error);
-        res.status(400).json({msg: "Terjadi kesalahan saat membuat akun pemilik"});
+        res.status(400).json({msg: "Terjadi kesalahan saat membuat akun pencari kost"});
     }
 }
-export const updatePemilik = async(req, res) =>{
-    const pemilik = await Pemilik.findOne({
+export const updatePencari = async(req, res) =>{
+    const pencari = await Pencari.findOne({
         where: {
             uuid: req.params.id
         }
     });
-    if(!pemilik) return res.status(404).json({msg: "User tidak ditemukan"});
+    if(!pencari) return res.status(404).json({msg: "User tidak ditemukan"});
     const {name, email, password, confPassword, role} = req.body;
     let hashPassword;
     if(password === "" || password === null ){
-        hashPassword = pemilik.password
+        hashPassword = pencari.password
     }else{
         hashPassword = await argon2.hash(password);
     }
     if(password !== confPassword) return res.status(400).json({msg: "Password dan confirm pasword tidak cocok"});
     try {
-        await Pemilik.update({
+        await Pencari.update({
             name: name,
             email: email,
             password: hashPassword,
             role: role
         },{
             where:{
-                id: pemilik.id
+                id: pencari.id
             }
         });
-        res.status(200).json({msg: "Akun Pemilik di update"});
+        res.status(200).json({msg: "Akun Pencari di update"});
     } catch (error) {
         console.error(error);
-        res.status(400).json({msg: "Terjadi kesalahan saat membuat akun pemilik"});
+        res.status(400).json({msg: "Terjadi kesalahan saat membuat akun pencari"});
     }
 }
-export const deletePemilik = async(req, res) =>{
-    const pemilik = await Pemilik.findOne({
+export const deletePencari = async(req, res) =>{
+    const pencari = await Pencari.findOne({
         where: {
             uuid: req.params.id
         }
     });
-    if(!pemilik) return res.status(404).json({msg: "User tidak ditemukan"});
+    if(!pencari) return res.status(404).json({msg: "User tidak ditemukan"});
     try {
-        await Pemilik.destroy({
+        await Pencari.destroy({
             where:{
-                id: pemilik.id
+                id: pencari.id
             }
         });
-        res.status(200).json({msg: "Akun Pemilik di hapus"});
+        res.status(200).json({msg: "Akun Pencari di hapus"});
     } catch (error) {
         console.error(error);
-        res.status(400).json({msg: "Terjadi kesalahan saat menghapus akun pemilik"});
+        res.status(400).json({msg: "Terjadi kesalahan saat menghapus akun pencari"});
     }
 }
