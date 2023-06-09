@@ -20,23 +20,34 @@ GET http://localhost:5000/pemilik-kost/21f3ddeb-34f7-4f91-8196-7d917056aad8
 
 ###
 // update a User
-PATCH  http://localhost:5000/pemilik-kost/0e8c6821-f954-40ce-81e7-b386e413cbd9
+PATCH  http://localhost:5000/pemilik-kost/a4459817-6388-4246-b7f9-9359909d5113
 Content-Type: application/json
 
 {
-    "name": "lala up",
-    "email": "levi@gmail.com",
+    "name": "jojo",
+    "email": "jojo@gmail.com",
     "password": "",
     "confPassword": "",
-    "role": "user"
+    "role": "pencari kost"
 }
 
 ###
 // delete a user
 DELETE  http://localhost:5000/pemilik-kost/0e8c6821-f954-40ce-81e7-b386e413cbd9
 
+
 ###
-// Login Users
+// Login Pemilik Kost
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "lala@gmail.com",
+    "password": "123"
+}
+
+###
+// Login Admin
 POST http://localhost:5000/login
 Content-Type: application/json
 
@@ -46,7 +57,19 @@ Content-Type: application/json
 }
 
 ###
+// Login Pencari Kost
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "jojo@gmail.com",
+    "password": "123"
+}
+
+// sedang login
+###
 GET http://localhost:5000/me
 
+// Logout
 ###
 DELETE http://localhost:5000/logout
