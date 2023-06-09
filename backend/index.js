@@ -46,7 +46,7 @@ app.use(KostRoute);
 app.use(AuthRoute);
 
 //generate table session
-store.sync();
+// store.sync();
 
 app.listen(process.env.APP_PORT, ()=> {
     console.log('Server berjalan dengan baik bangett...');
