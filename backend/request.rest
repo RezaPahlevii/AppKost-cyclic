@@ -7,7 +7,7 @@ Content-Type: application/json
     "email": "lala@gmail.com",
     "password": "123",
     "confPassword": "123",
-    "role": "user"
+    "role": "Pemilik Kost"
 }
 
 ###
@@ -20,7 +20,7 @@ GET http://localhost:5000/pemilik-kost/21f3ddeb-34f7-4f91-8196-7d917056aad8
 
 ###
 // update a User
-PATCH  http://localhost:5000/pemilik-kost/60a00643-0f26-439e-829d-b5edb69da382
+PATCH  http://localhost:5000/pemilik-kost/0e8c6821-f954-40ce-81e7-b386e413cbd9
 Content-Type: application/json
 
 {
@@ -33,4 +33,4 @@ Content-Type: application/json
 
 ###
 // delete a user
-DELETE  http://localhost:5000/pemilik-kost/60a00643-0f26-439e-829d-b5edb69da382
+DELETE  http://localhost:5000/pemilik-kost/0e8c6821-f954-40ce-81e7-b386e413cbd9

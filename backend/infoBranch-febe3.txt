@@ -1,5 +1,0 @@
-branch ini sudah selesai untuk CRUD pemilik kost & admin.
-sampai disini saya punya asumsi multi role belum berfungsi karena
-pada saat menambahkan new user, bagian role bisa di ubah sebagai admin, pencari dan juga pemilik.
-
-saya akan buat branch febe3-try untuk mencoba selanjutkan apakah dipisah dengan protect funtion dll.
