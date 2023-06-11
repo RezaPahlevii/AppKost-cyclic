@@ -1,0 +1,96 @@
+// Create User (Register)
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Ajo",
+    "email": "ajo@gmail.com",
+    "password": "123",
+    "confPassword": "123",
+    "role": "user"
+}
+
+###
+// get All Users
+GET http://localhost:5000/users 
+
+###
+// get Single User
+GET http://localhost:5000/users/d7b5d6c2-64ba-4314-9fe5-bc3a9eb28873
+
+###
+// Update User
+PATCH  http://localhost:5000/users/c6886471-54dc-4f81-96ce-61a0cbf9d941
+Content-Type: application/json
+
+{
+    "name": "",
+    "email": "@gmail.com",
+    "password": "",
+    "confPassword": "",
+    "role": "" 
+}
+
+###
+// delete user
+DELETE http://localhost:5000/users/c6886471-54dc-4f81-96ce-61a0cbf9d941
+
+###
+// Login Admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "levi@gmail.com",
+    "password": "123"
+}
+
+###
+// Login User
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "ajo@gmail.com",
+    "password": "123"
+}
+
+###
+// me
+GET http://localhost:5000/me
+
+###
+// logout
+DELETE http://localhost:5000/logout
+
+###
+// get all Kost
+GET http://localhost:5000/rumah-kost
+
+###
+// get single Kost
+GET http://localhost:5000/rumah-kost/4fd197bf-7902-4398-8b17-5f99c7e458a7
+
+###
+// tambah data Kost
+POST http://localhost:5000/rumah-kost
+Content-Type: application/json
+
+{
+    "name": "kost merah",
+    "price": "500.000"
+}
+
+###
+// update data Kost
+PATCH http://localhost:5000/rumah-kost/8a85de40-a629-4fbd-b41c-d9556575715c
+Content-Type: application/json
+
+{
+    "name": "kost merah update",
+    "price": "500.000"
+}
+
+###
+// delete kost
+DELETE http://localhost:5000/rumah-kost/4fd197bf-7902-4398-8b17-5f99c7e458a7
